@@ -21,7 +21,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/PuneethReddy03/fullstack_app.git', branch: 'master'
+                git url: 'https://github.com/PuneethReddy03/fullstack_app.git', branch: 'main'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 dir("${env.FRONTEND_DIR}") {
                     script {
-                        def nodeHome = tool name: 'Nodejs', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                        def nodeHome = tool name: 'NODE_HOME', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                         env.PATH = "${nodeHome}/bin:${env.PATH}"
                     }
                     sh 'npm install'
